@@ -6,7 +6,7 @@ pipeline {
       stage('checkout') {
            steps {
              
-                git branch: 'master', url: 'https://github.com/sandysanjeev2/CI-CD-using-Docker.git'
+                git branch: 'master', url: 'https://github.com/Bhavanaht5/CI-CD-using-Docker.git'
              
           }
         }
@@ -22,7 +22,7 @@ pipeline {
            steps {
               
                 sh 'docker build -t samplewebapp:latest .' 
-                sh 'docker tag samplewebapp sandysanjeev2/samplewebapp:latest'
+                sh 'docker tag samplewebapp bhavanaht5/samplewebapp:latest'
                 //sh 'docker tag samplewebapp sandysanjeev2/samplewebapp:$BUILD_NUMBER'
                
           }
@@ -31,10 +31,10 @@ pipeline {
   stage('Publish image to Docker Hub') {
           
             steps {
-        withDockerRegistry([ credentialsId: "sandysanjeev2", url: "" ]) {
+        withDockerRegistry([ credentialsId: "bhavanaht5", url: "" ]) {
      
-		sh  'docker push sandysanjeev2/samplewebapp:latest'
-        //  sh  'docker push sandysanjeev2/samplewebapp:$BUILD_NUMBER' 
+		sh  'docker push bhavanaht5/samplewebapp:latest'
+        //  sh  'docker push bhavanaht5/samplewebapp:$BUILD_NUMBER' 
         }
                   
           }
@@ -44,7 +44,7 @@ pipeline {
              
             steps 
 			{
-                sh "docker run -d -p 8003:8080 sandysanjeev2/samplewebapp"
+                sh "docker run -d -p 8003:8080 bhavanaht5/samplewebapp"
  
             }
         }
@@ -52,7 +52,7 @@ pipeline {
              
             steps 
 			{
-                sh "docker run -d -p 8003:8080 sandysanjeev2/samplewebapp"
+                sh "docker run -d -p 8003:8080 bhavanaht5/samplewebapp"
  
             }
         } */
