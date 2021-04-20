@@ -3,7 +3,7 @@ pipeline {
 	
 	
  stages {
-      stage('checkout') {
+      stage('Checkout') {
            steps {
              
                 git branch: 'master', url: 'https://github.com/Bhavanaht5/CI-CD-using-Docker.git'
