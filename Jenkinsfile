@@ -1,7 +1,9 @@
+#!/usr/bin/env groovy
+
 pipeline {
     agent any
 	
-@Library('shared-library@master') _ //master or whatever branch
+@Library('shared-library@master') _ //master branch
 	
  stages {
       stage('checkout') {
