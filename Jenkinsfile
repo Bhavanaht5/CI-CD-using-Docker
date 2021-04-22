@@ -30,7 +30,7 @@ pipeline {
           
             steps {
                 withDockerRegistry([ credentialsId: "bhavanaht5", url: "" ]) {
-     		sh  'docker push bhavanaht5/samplewebapp:$BUILD_NUMBERt'
+     		sh  'docker push bhavanaht5/samplewebapp:$BUILD_NUMBER'
                 //  sh  'docker push bhavanaht5/samplewebapp:$BUILD_NUMBER' 
         }                 
        }
