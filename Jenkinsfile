@@ -17,7 +17,7 @@ pipeline {
      stage('Docker Build and Tag') {
            steps {
               
-                sh 'docker build -t samplewebapp:latest .' 
+                sh 'docker build -t bhavanaht5/samplewebapp:latest .' 
                 sh 'docker tag samplewebapp bhavanaht5/samplewebapp:$BUILD_NUMBER'                               
           }
         }
@@ -48,7 +48,7 @@ pipeline {
       stage('Run Docker container on Jenkins Agent') {          
             steps 
 		{
-                sh 'docker run -it -d -p 8003:8080 --name=tomcat_container bhavanaht5/samplewebapp'
+                sh 'docker run -it -d -p 8003:8080 --name=tomcat_container bhavanaht5/samplewebapp:latest'
             }
         }
  	// use url to ping: http://PublicIPAddpress:8003//LoginWebApp-1/  
