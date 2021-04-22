@@ -1,6 +1,8 @@
 pipeline {
     agent any
-	
+	environment{
+          CONTAINER_NAME = ''
+}
 	
  stages {
       stage('Checkout') {
@@ -36,10 +38,23 @@ pipeline {
        }
       }
      
+	 stage('Stop and Remove Previous build containers') {
+		 steps
+		 {
+                script{
+if (env.CONTAINER_NAME == 'tomcat_container'){
+            sh "docker ps -f name=tomcat_deploy -q | xargs --no-run-if-empty docker container stop"
+            sh "docker ps -a -f status=exited -q | xargs --no-run-if-empty docker rm"
+     }
+}			
+		 }
+	 }
+	 
       stage('Run Docker container on Jenkins Agent') {            
             steps 
         	{
                 sh "docker run -d -p 8003:8080 --name=tomcat_container bhavanaht5/samplewebapp"
+	        env.CONTAINER_NAME = 'tomcat_container'
             }
         }
  
