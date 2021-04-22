@@ -39,7 +39,7 @@ pipeline {
       stage('Run Docker container on Jenkins Agent') {            
             steps 
         	{
-                sh "docker run -d -p 8003:8080 bhavanaht5/samplewebapp"
+                sh "docker run -d -p 8003:8080 --name=tomcat_container bhavanaht5/samplewebapp"
             }
         }
  
