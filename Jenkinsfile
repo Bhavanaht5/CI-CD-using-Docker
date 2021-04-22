@@ -54,7 +54,7 @@ if (env.CONTAINER_NAME == 'tomcat_container'){
             steps 
         	{
                 sh "docker run -d -p 8003:8080 --name=tomcat_container bhavanaht5/samplewebapp"
-	        env.CONTAINER_NAME = 'tomcat_container'
+	        sh "env.CONTAINER_NAME = 'tomcat_container'"
             }
         }
  
