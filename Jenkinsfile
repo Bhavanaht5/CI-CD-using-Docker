@@ -1,6 +1,7 @@
 pipeline {
     agent any
 	
+@Library('shared-library@master') _ //master or whatever branch
 	
  stages {
       stage('checkout') {
@@ -13,6 +14,12 @@ pipeline {
                 sh 'mvn package'             
           }
         }
+	 
+	 stage ('Check logs') {
+                    steps {
+                        filterLogs ('WARNING', 5)
+                    }
+                }
         
      stage('Docker Build and Tag') {
            steps {
